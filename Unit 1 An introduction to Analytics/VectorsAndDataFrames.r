@@ -1,0 +1,10 @@
+Country=c("Brazil","China","India","Switzerland","USA")
+LifeExpectancy=c(11,22,33,44,55)
+CountryData= data.frame(Country,LifeExpectancy)
+CountryData$Population <- c(199000,1390000,1240000,7997,318000)
+
+Country= c("Austrlia","Greece")
+LifeExpectancy=c(82,81)
+Population=c(23050,11125)
+NewCountryData=data.frame(Country,LifeExpectancy,Population)
+AllCountryData=rbind(CountryData,NewCountryData)
