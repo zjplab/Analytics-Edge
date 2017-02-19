@@ -5,6 +5,7 @@
 
 # Read in the data
 
+#stringsAsFactors is a logical that indicates whether strings in a data frame should be treated as factor variables or as just plain strings.
 tweets = read.csv("tweets.csv", stringsAsFactors=FALSE)
 
 str(tweets)
@@ -20,26 +21,26 @@ table(tweets$Negative)
 # Install new packages
 
 install.packages("tm")
-library(tm)
+library(tm) #load package 
 install.packages("SnowballC")
 library(SnowballC)
 
 
-# Create corpus
+# Create corpus, where a corpus is a collection of documents 
  
 corpus = Corpus(VectorSource(tweets$Tweet))
 
 # Look at corpus
 corpus
 
-corpus[[1]]
+corpus[[1]]$content
 
 
 # Convert to lower-case
 
-corpus = tm_map(corpus, tolower)
+corpus = tm_map(corpus, content_transformer(tolower))
 
-corpus[[1]]
+corpus[[1]]$content
 
 # IMPORTANT NOTE: If you are using the latest version of the tm package, you will need to run the following line before continuing (it converts corpus to a Plain Text Document). This is a recent change having to do with the tolower function that occurred after this video was recorded.
 
@@ -50,7 +51,7 @@ corpus = tm_map(corpus, PlainTextDocument)
 
 corpus = tm_map(corpus, removePunctuation)
 
-corpus[[1]]
+corpus[[1]]$content
 
 # Look at stop words 
 stopwords("english")[1:10]
@@ -59,13 +60,12 @@ stopwords("english")[1:10]
 
 corpus = tm_map(corpus, removeWords, c("apple", stopwords("english")))
 
-corpus[[1]]
-
+corpus[[1]]$content
 # Stem document 
 
 corpus = tm_map(corpus, stemDocument)
 
-corpus[[1]]
+corpus[[1]]$content
 
 
 
