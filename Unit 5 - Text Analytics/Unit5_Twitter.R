@@ -106,7 +106,7 @@ tweetsSparse$Negative = tweets$Negative
 # Split the data
 
 library(caTools)
-
+#you firstly need to install this package 
 set.seed(123)
 
 split = sample.split(tweetsSparse$Negative, SplitRatio = 0.7)
