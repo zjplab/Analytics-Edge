@@ -24,7 +24,7 @@ distance = dist(flowerVector, method = "euclidean")
 # Video 3
 
 # Hierarchical clustering
-clusterIntensity = hclust(distance, method="ward")
+clusterIntensity = hclust(distance, method="ward.D")
 
 # Plot the dendrogram
 plot(clusterIntensity)
